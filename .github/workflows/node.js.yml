@@ -27,5 +27,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache-dependency-path: Event/package-lock.json
         cache: 'npm'
-    - run: npm install
-    - run: node Event/index.js
+        
+    - name: Install dependencies
+      run: npm install
+      working-directory: Event
+
+    - name: Running app
+      run: node index.js
+      working-directory: Event
