@@ -28,5 +28,4 @@ jobs:
         cache-dependency-path: Event/package-lock.json
         cache: 'npm'
     - run: npm install
-    - run: node Event\index.js 
-    - run: node User\index.js
+    - run: node Event\index.js
