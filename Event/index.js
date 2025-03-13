@@ -4,7 +4,6 @@ import cors from 'cors';
 import eventRoutes from './routes/eventRoutes.js';
 import dotenv from 'dotenv';
 
-// Load environment variables from .env file
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -24,3 +23,12 @@ mongoose.connect(dbURL, {}).then(() => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+let server = null;
+if (process.env.NODE_ENV !== 'test') {
+    server = app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
+}
+
+export { app, server };
