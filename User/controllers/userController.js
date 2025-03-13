@@ -10,10 +10,10 @@ export const userRegistration = async (req, res) => {
         });
 
         await newUser.save();
-        res.status(201).send(newUser);
+        res.status(201).json(newUser);
     } 
     catch (error) {
-        res.status(400).send(error);
+        res.status(400).json({error: error.message});
     }
 };
 

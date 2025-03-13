@@ -23,3 +23,12 @@ mongoose.connect(dbURL, {}).then(() => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+let server = null;
+if (process.env.NODE_ENV !== 'test') {
+    server = app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
+}
+
+export { app, server };
