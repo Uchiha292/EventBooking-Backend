@@ -26,9 +26,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        cache-dependency-path: User/package-lock.json
     - name: Install dependencies
       run: npm install
+      working-directory: User
     - name: Ensure Jest is Executable
-      run: chmod +x node_modules/.bin/jest
+      run: chmod +x User/node_modules/.bin/jest
     - name: Run tests
-      run: npm test --User/
+      run: npm test
+      working-directory: User
